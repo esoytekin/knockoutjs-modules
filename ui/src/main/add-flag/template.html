@@ -1,0 +1,16 @@
+<h2>Add New Flag</h2>
+<form data-bind="submit: addFlag">
+    <div style="display: flex; gap: 5px; justify-content: center">
+        <input
+            id="flag-id"
+            type="text"
+            placeholder="Enter flag id"
+            data-bind="value: newFlag.id"
+        />
+        <select data-bind="value: newFlag.value">
+            <option value="false">False</option>
+            <option value="true">True</option>
+        </select>
+        <button type="submit" class="btn btn-primary">Add</button>
+    </div>
+</form>

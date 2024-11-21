@@ -1,0 +1,27 @@
+<div id="app" class="container" data-bind="childrenComplete: loadFlags">
+    <header>
+        <h1>Flag Management</h1>
+    </header>
+
+    <section class="controls">
+        <!-- Add Flag Form -->
+        <add-flag-form
+            class="add-flag"
+            params="loadFlags:loadFlags"
+        ></add-flag-form>
+
+        <flag-filter
+            class="filter-flags"
+            params="onFilter:onFilter"
+        ></flag-filter>
+        <!-- Flag Filter -->
+        <!-- <flag-filter -->
+        <!--     class="filter-flags" -->
+        <!--     params="filterText: filterText" -->
+        <!-- ></flag-filter> -->
+    </section>
+
+    <flag-list
+        params="filteredFlags:filteredFlags, loadFlags: loadFlags"
+    ></flag-list>
+</div>

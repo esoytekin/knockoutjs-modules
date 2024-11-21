@@ -1,0 +1,24 @@
+<section class="flag-grid">
+    <div class="grid" data-bind="foreach: filteredFlags">
+        <div class="flag-card">
+            <p>
+                <b><span data-bind="text: id"></span></b>:
+                <span data-bind="text: value"></span>
+            </p>
+            <div class="actions">
+                <button
+                    class="btn btn-toggle"
+                    data-bind="click: $parent.toggleFlag"
+                >
+                    Toggle
+                </button>
+                <button
+                    class="btn btn-delete"
+                    data-bind="click: $parent.deleteFlag"
+                >
+                    Delete
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
