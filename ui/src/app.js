@@ -1,39 +1,35 @@
+const modules = [
+    {
+        name: "main-page",
+        path: "main/main-page",
+    },
+    {
+        name: "add-flag-form",
+        path: "main/add-flag",
+    },
+    {
+        name: "flag-filter",
+        path: "main/flag-filter",
+    },
+    {
+        name: "flag-list",
+        path: "main/flag-list",
+    },
+];
+
 define([
     "knockout",
-    "main/main-page/view-model",
-    "main/add-flag/view-model",
-    "main/flag-list/view-model",
-    "main/flag-filter/view-model",
-], function (ko, mainView, addFlag, flagList, flagFilter) {
+    ...modules.map(({ path }) => `${path}/view-model`),
+], function (ko, ...views) {
     return {
-        init: function () {
-            const t = Date.now();
-            ko.components.register("main-page", {
-                viewModel: mainView,
-                template: {
-                    require: "text!./main/main-page/template.html",
-                },
-            });
-
-            ko.components.register("add-flag-form", {
-                viewModel: addFlag,
-                template: {
-                    require: `text!./main/add-flag/template.html`,
-                },
-            });
-
-            ko.components.register("flag-filter", {
-                viewModel: flagFilter,
-                template: {
-                    require: "text!./main/flag-filter/template.html",
-                },
-            });
-
-            ko.components.register("flag-list", {
-                template: {
-                    require: `text!./main/flag-list/template.html?t=${t}`,
-                },
-                viewModel: flagList,
+        init: () => {
+            modules.forEach((module, idx) => {
+                ko.components.register(module.name, {
+                    viewModel: views[idx],
+                    template: {
+                        require: `text!${module.path}/template.html`,
+                    },
+                });
             });
 
             ko.applyBindings();
